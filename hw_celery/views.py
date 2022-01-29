@@ -1,6 +1,7 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .forms import MyForm
 from .tasks import my_send_mail
+from .models import Author, Quotes
 
 
 def reminder(request):
@@ -17,3 +18,18 @@ def reminder(request):
     return render(request, 'reminder.html', {
         'form': form,
     })
+
+
+def authors(request):
+    author = Author.objects.all()
+    return render(request, 'author.html', {'author_list': author})
+
+
+def authors_info(request, pk):
+    author_info = get_object_or_404(Author.objects, pk=pk)
+    return render(request, 'author_info.html', {'author_info': author_info})
+
+
+def quote(request):
+    quotes = Quotes.objects.all()
+    return render(request, 'quotes.html', {'quote_list': quotes})

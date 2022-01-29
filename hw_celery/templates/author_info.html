@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>Автор: {{ author.name }}</li>
+            <li>Дата и место рождения: {{ author.date_birthday}}</li>
+            <li class="container">
+                <p>{{ author.about}}</p>
+            </li>
+            <li>
+                <h4>
+                    Цитата:
+                    <ul>
+                        {% for quote in author.quotes_set.all %}
+                            <p>{{ quote.quotes }}</p>
+                        {% endfor %}
+                    </ul>
+                </h4>
+            </li>
+    </ul>
+</body>
+</html>

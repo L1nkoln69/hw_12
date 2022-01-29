@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if quotes %}
+            <ul>
+                {% for quote in quotes %}
+                    <li>
+                        <div class="container" style="margin: 25px">
+                            <ul>
+                                <li><a href="{{ quote.author.get_absolute_url }}">{{ quote.author }}</a></li>
+                                <li>{{ quote.quotes }}</li>
+                            </ul>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>нету цитат</p>
+    {% endif %}
+</body>
+</html>

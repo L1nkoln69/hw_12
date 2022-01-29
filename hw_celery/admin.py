@@ -1,3 +1,12 @@
-from django.contrib import admin  # noqa F401
+from django.contrib import admin
+from .models import Author, Quotes
 
-# Register your models here.
+
+@admin.register(Author)
+class AuthorAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Quotes)
+class QuotesAdmin(admin.ModelAdmin):
+    pass

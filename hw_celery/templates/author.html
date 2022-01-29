@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if author %}
+            <ul>
+                {% for authors in author %}
+                    <li>
+                        <div class="container">
+                            <a href="{{author.get_absolute_url}}">
+                                {{ authors.name }} ({{ authors.date_birthday }})
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Цитат нетy</p>
+        {% endif %}
+</body>
+</html>
