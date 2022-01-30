@@ -35,10 +35,12 @@ def parsing_site():
     a = -1
     for author_one in range(author_info + 1):
         counter = 0
+        id_objects = 0
         if counter == 5:
             break
         else:
             a += 1
+            id_objects += 1
             quotes = site.find('div', {'class': 'container'}).find_all('span', {'class': 'text'})
             authors = site.find('div', {'class': 'container'}).find_all('small', {'class': 'author'})
 
@@ -57,20 +59,14 @@ def parsing_site():
                     if quotes[a].text in db_quotes:
                         continue
                     else:
-                        a += 1
-                        Quotes.objects.create(quotes=quotes[a].text, authors_id=id_author[a].id)
+                        Quotes.objects.create(quotes=quotes[a].text, authors_id=id_author[id_objects].id)
                         counter += 1
-                        a -= 1
-                        continue
                 else:
-                    a += 1
                     Author.objects.create(name=authors[a].text,
                                           date_birthday=f'{born_date}, {born_location}',
                                           about=abouts)
-                    Quotes.objects.create(quotes=quotes[a].text, authors_id=id_author[a].id)
+                    Quotes.objects.create(quotes=quotes[a].text, authors_id=id_author[id_objects].id)
                     counter += 1
-                    a -= 1
-                    continue
             except IndexError:
                 to_me_send_mail(page_number)
                 page_number += 1
