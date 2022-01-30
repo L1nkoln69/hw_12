@@ -15,6 +15,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'parsing-site': {
         'task': 'hw_celery.tasks.parsing_site',
-        'schedule': crontab(hour='1-23/2')
+        'schedule': crontab(minute='*/15')
     }
 }

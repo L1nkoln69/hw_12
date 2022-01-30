@@ -22,14 +22,14 @@ def reminder(request):
 
 def authors(request):
     author = Author.objects.all()
-    return render(request, 'author.html', {'author_list': author})
+    return render(request, 'author.html', {'author': author})
 
 
 def authors_info(request, pk):
-    author_info = get_object_or_404(Author.objects, pk=pk)
+    author_info = get_object_or_404(Author.objects.all(), pk=pk)
     return render(request, 'author_info.html', {'author_info': author_info})
 
 
 def quote(request):
     quotes = Quotes.objects.all()
-    return render(request, 'quotes.html', {'quote_list': quotes})
+    return render(request, 'quotes.html', {'quotes': quotes})
